@@ -11,8 +11,9 @@ const port = process.env.PORT || 8080;
 //middleWares 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://task-client-pearl.vercel.app'
+    origin: ['https://task-client-pearl.vercel.app', 'https://task-client-22qfv0mkp-govindpenshanwars-projects.vercel.app']
 }));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
