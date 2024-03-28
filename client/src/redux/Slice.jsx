@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import baseUrl from '../helpers/baseUrl.jsx';
 export const todoSlice = createSlice({
     name: 'todos',
     initialState: {
@@ -62,7 +62,7 @@ export const selectedTodos = state => state.todos.todos;
 export const fetchTodos = () => async dispatch => {
     dispatch(fetchTodosStart());
     try {
-        const response = await axios.get('http://localhost:3001/api/todos'); 
+        const response = await axios.get(`${baseUrl}/api/todos`);
         if (response.status >= 200 && response.status < 3000) {
             const todos = await response.data.todos;
             dispatch(fetchTodosSuccess(todos));
@@ -78,7 +78,7 @@ export const fetchTodos = () => async dispatch => {
 export const addTodo = (todoData) => async dispatch => {
     dispatch(addTodoStart());
     try {
-        const response = await axios.post("http://localhost:3001/api/todos", todoData);
+        const response = await axios.post(`${baseUrl}/api/todos`, todoData);
         if (response.status >= 200 && response.status < 3000) {
             const newTodo = response.data;
             dispatch(addTodoSuccess(newTodo));
@@ -94,7 +94,7 @@ export const addTodo = (todoData) => async dispatch => {
 export const deleteTodo = (todoId) => async dispatch => {
     dispatch(deleteTodoStart());
     try {
-        const response = await axios.delete(`http://localhost:3001/api/todos/${todoId}`);
+        const response = await axios.delete(`${baseUrl}/api/todos/${todoId}`);
         if (response.status >= 200 && response.status < 300) {
             dispatch(deleteTodoSuccess(todoId))
         } else {

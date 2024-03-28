@@ -4,13 +4,15 @@ require('./dbConfig/dbConfig.js')
 const Todos = require('./models/model.js');
 const cors = require('cors')
 
-
+require('dotenv').config();
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8080;
 
 //middleWares 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000"
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/api/todos", async (req, res) => {
