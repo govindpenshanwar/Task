@@ -15,6 +15,10 @@ app.use(cors({
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+    res.send("Hello, World!"); // or render your homepage if applicable
+});
+
 app.get("/api/todos", async (req, res) => {
     try {
 

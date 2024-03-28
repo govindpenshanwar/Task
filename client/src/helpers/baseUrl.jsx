@@ -1,3 +1,3 @@
-const baseUrl = "http://localhost:8080";
+const baseUrl = "todo-server-nine-fawn.vercel.app";
 
 export default baseUrl;
