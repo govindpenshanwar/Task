@@ -1,3 +1,3 @@
-const baseUrl = "todo-server-nine-fawn.vercel.app";
+const baseUrl = "https://todo-server-nine-fawn.vercel.app";
 
 export default baseUrl;
